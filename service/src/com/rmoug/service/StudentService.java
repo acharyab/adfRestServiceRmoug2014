@@ -28,7 +28,7 @@ public class StudentService {
     }
 
     @GET
-    @Produces("application/json")
+    @Produces("text/plain")
     @Path("/hello")
     public String helloWorld(){
         
