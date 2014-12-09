@@ -122,6 +122,10 @@
             <value n="id" v="JAX-RS Jersey 1.x"/>
             <value n="isJDK" v="false"/>
          </hash>
+         <hash>
+            <value n="id" v="JAX-RS Jersey Jackson (Bundled)"/>
+            <value n="isJDK" v="false"/>
+         </hash>
       </list>
       <list n="libraryReferences">
          <hash>
@@ -146,6 +150,10 @@
          </hash>
          <hash>
             <value n="id" v="JAX-RS Jersey 1.x"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="JAX-RS Jersey Jackson (Bundled)"/>
             <value n="isJDK" v="false"/>
          </hash>
       </list>

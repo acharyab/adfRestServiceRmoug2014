@@ -5,6 +5,10 @@ import com.rmoug.business.StudentCourseBeanLocal;
 import com.rmoug.entities.Student;
 import com.rmoug.entities.StudentCourse;
 
+import com.rmoug.entities.StudentCourseVw;
+
+import java.math.BigDecimal;
+
 import java.util.List;
 
 import javax.inject.Singleton;
@@ -15,13 +19,21 @@ import javax.ws.rs.Produces;
 
 import javax.ejb.EJB;
 
+import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.POST;
+import javax.ws.rs.QueryParam;
+import javax.ws.rs.WebApplicationException;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+
 
 @Singleton
 @Path("service")
 public class StudentService {
     
     @EJB
-    StudentCourseBeanLocal StudentBean;
+    StudentCourseBeanLocal studentBean;
     
     public StudentService() {
         super();
@@ -40,8 +52,41 @@ public class StudentService {
     @Path("/student")
     public List<Student> getStudentFindAll(){
         
-        return StudentBean.getStudentFindAll();
+        return studentBean.getStudentFindAll();
         
     }
+    
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/studentCourse") 
+    public List<StudentCourseVw> getStudentsForCourse(@QueryParam("courseId") BigDecimal courseId) {
+        
+      List<StudentCourseVw> studentsForCourse;
+      
+      if (courseId != null)
+          studentsForCourse = studentBean.getStudentsForCourse(courseId);
+      else
+          throw new WebApplicationException(Response.Status.BAD_REQUEST);
+      
+      return studentsForCourse;
+    }
+    
+    
+    @POST
+    @Consumes (MediaType.APPLICATION_JSON)
+    @Path("/studentCourse")
+    public Response addStudentToCourse(StudentCourse studentCourse) {
+        StudentCourse newSc= new StudentCourse();
+        newSc = studentBean.persistStudentCourse(studentCourse);
+        return Response.ok().build();
+    } 
+
+    @DELETE
+    @Consumes (MediaType.APPLICATION_JSON)
+    @Path("/studentCourse")
+    public Response removeStudentFromCourse(StudentCourse studentCourse) {
+        studentBean.removeStudentCourse(studentCourse);
+        return Response.ok().build();
+    }  
     
 }

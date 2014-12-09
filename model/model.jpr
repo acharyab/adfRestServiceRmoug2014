@@ -62,7 +62,6 @@
    </list>
    <value n="defaultPackage" v="com.rmoug"/>
    <hash n="ejbModuleContainer">
-      <value n="dbConnection" v="twcis"/>
       <value n="ejbMetaDataPrefs" v="PREFASANNON"/>
       <value n="ejbVersion" v="3.0"/>
       <value n="ejbVersionMinor" v="0.1"/>

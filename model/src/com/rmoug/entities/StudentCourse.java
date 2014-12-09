@@ -8,9 +8,12 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -32,6 +35,8 @@ public class StudentCourse implements Serializable {
     private String grade;
     @Id
     @Column(nullable = false)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "generic_seq")
+    @SequenceGenerator( name="generic_seq", sequenceName="GENERIC_SEQ", allocationSize=1)           
     private BigDecimal id;
     @Column(name = "STUDENT_ID", nullable = false)
     private BigDecimal studentId;

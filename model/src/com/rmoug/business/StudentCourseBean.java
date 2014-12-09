@@ -6,6 +6,10 @@ import com.rmoug.entities.Student;
 
 import com.rmoug.entities.StudentCourse;
 
+import com.rmoug.entities.StudentCourseVw;
+
+import java.math.BigDecimal;
+
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -110,4 +114,10 @@ public class StudentCourseBean implements StudentCourseBeanLocal {
     public List<StudentCourse> getStudentCourseFindAll() {
         return em.createNamedQuery("StudentCourse.findAll", StudentCourse.class).getResultList();
     }
+
+    @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
+    public List<StudentCourseVw> getStudentsForCourse(BigDecimal courseId){
+       return em.createNamedQuery("StudentCourseVw.findStudentbyCourse", StudentCourseVw.class).setParameter(1, courseId).getResultList();
+    }
+
 }
