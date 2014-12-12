@@ -16,6 +16,8 @@ import javax.ws.rs.Produces;
 import javax.ejb.EJB;
 
 
+import org.codehaus.jackson.map.ObjectMapper;
+
 @Singleton
 @Path("service")
 public class StudentService {
