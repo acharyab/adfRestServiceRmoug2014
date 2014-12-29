@@ -4,6 +4,10 @@ import com.rmoug.entities.Course;
 import com.rmoug.entities.Student;
 import com.rmoug.entities.StudentCourse;
 
+import com.rmoug.entities.StudentCourseVw;
+
+import java.math.BigDecimal;
+
 import java.util.List;
 
 import javax.ejb.Local;
@@ -39,4 +43,6 @@ public interface StudentCourseBeanLocal {
     void removeStudentCourse(StudentCourse studentCourse);
 
     List<StudentCourse> getStudentCourseFindAll();
+    
+    List<StudentCourseVw> getStudentsForCourse(BigDecimal courseId);
 }
