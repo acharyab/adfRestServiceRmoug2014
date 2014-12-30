@@ -84,6 +84,7 @@ public class StudentService {
         newSc = studentBean.persistStudentCourse(studentCourse);
         return Response.ok().build();
     } 
+    
 
     @DELETE
     @Consumes (MediaType.APPLICATION_JSON)
@@ -93,6 +94,7 @@ public class StudentService {
         return Response.ok().build();
     }  
     
+    
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/student")
@@ -100,6 +102,7 @@ public class StudentService {
        studentBean.mergeStudent(student);
         return Response.ok().build(); 
     }
+    
     
     @GET
     @Produces(MediaType.APPLICATION_JSON)
