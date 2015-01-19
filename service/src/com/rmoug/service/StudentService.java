@@ -46,18 +46,22 @@ public class StudentService {
     @GET
     @Produces("text/plain")
     @Path("/hello")
-    public String helloWorld(){
-        
+    public String helloWorld(){       
         return "Hello RMOUG 2015";
     }
     
     @GET
     @Produces("application/json")
     @Path("/student")
-    public List<Student> getStudentFindAll(){
+    public List<Student> getStudentFindAll(@QueryParam("studentId") Integer studentId){    
+        List<Student> students;
+        if (studentId != null){
+            students = studentBean.getStudentById(studentId);
+        }else{
+            students = studentBean.getStudentFindAll();
+        }
         
-        return studentBean.getStudentFindAll();
-        
+        return students;       
     }
     
     @GET
@@ -110,5 +114,6 @@ public class StudentService {
     public List<Course> getAllCourses(){
         return studentBean.getCourseFindAll();
     }
+    
     
 }

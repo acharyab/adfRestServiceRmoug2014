@@ -6,7 +6,6 @@
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <jta-data-source>java:/app/jdbc/jdbc/twcisDS</jta-data-source>
     <class>com.rmoug.entities.Course</class>
-    <class>com.rmoug.entities.Student</class>
     <class>com.rmoug.entities.StudentCourse</class>
     <properties>
       <property name="eclipselink.target-server" value="WebLogic_10"/>

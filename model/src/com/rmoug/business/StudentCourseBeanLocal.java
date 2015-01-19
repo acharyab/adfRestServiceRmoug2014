@@ -35,6 +35,8 @@ public interface StudentCourseBeanLocal {
     void removeStudent(Student student);
 
     List<Student> getStudentFindAll();
+    
+    List<Student> getStudentById(Integer studentId);
 
     StudentCourse persistStudentCourse(StudentCourse studentCourse);
 

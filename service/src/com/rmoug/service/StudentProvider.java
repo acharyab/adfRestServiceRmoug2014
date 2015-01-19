@@ -51,6 +51,24 @@ public class StudentProvider {
     }
     
     @Provider
+    @Consumes(MediaType.APPLICATION_JSON)
+    public static class CourseJsonReader implements MessageBodyReader<Course> {
+
+
+        @Override
+        public boolean isReadable(Class<?> c, Type type, Annotation[] annotation, MediaType mediaType) {
+            return c == Course.class;
+        }
+
+        @Override
+        public Course readFrom(Class<Course> c, Type type, Annotation[] annotation,
+                                        MediaType mediaType, MultivaluedMap<String, String> multivaluedMap,
+                                        InputStream inputStream) throws IOException, WebApplicationException {
+            return mapper.readValue(inputStream, Course.class);
+        }
+    }  
+    
+    @Provider
     @Produces(MediaType.APPLICATION_JSON)
     public static class ObjectJsonWriter implements MessageBodyWriter<Object> {
 
@@ -72,4 +90,24 @@ public class StudentProvider {
             mapper.writeValue(outputStream, object);
         }
     }    
+    
+    @Provider
+    @Consumes(MediaType.APPLICATION_JSON)
+    public static class StudentJsonReader implements MessageBodyReader<Student> {
+
+
+        @Override
+        public boolean isReadable(Class<?> c, Type type, Annotation[] annotation, MediaType mediaType) {
+            return c == Student.class;
+        }
+
+        @Override
+        public Student readFrom(Class<Student> c, Type type, Annotation[] annotation,
+                                        MediaType mediaType, MultivaluedMap<String, String> multivaluedMap,
+                                        InputStream inputStream) throws IOException, WebApplicationException {
+            return mapper.readValue(inputStream, Student.class);
+        }
+    }
+       
+    
 }

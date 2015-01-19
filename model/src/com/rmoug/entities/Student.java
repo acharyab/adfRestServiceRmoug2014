@@ -17,7 +17,10 @@ import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
-@NamedQueries({ @NamedQuery(name = "Student.findAll", query = "select o from Student o") })
+@NamedQueries({ @NamedQuery(name = "Student.findAll", query = "select o from Student o"), 
+                @NamedQuery(name = "Student.findStudentById", query = "select o from Student o where o.id = ?1")
+                })
+
 @XmlRootElement
 public class Student implements Serializable {
     private static final long serialVersionUID = 8169970994223395995L;

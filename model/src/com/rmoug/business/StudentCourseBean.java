@@ -119,5 +119,10 @@ public class StudentCourseBean implements StudentCourseBeanLocal {
     public List<StudentCourseVw> getStudentsForCourse(BigDecimal courseId){
        return em.createNamedQuery("StudentCourseVw.findStudentbyCourse", StudentCourseVw.class).setParameter(1, courseId).getResultList();
     }
+    
+    @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
+    public List<Student> getStudentById(Integer studentId){
+        return em.createNamedQuery("Student.findStudentById", Student.class).setParameter(1, studentId ).getResultList(); 
+    }
 
 }
