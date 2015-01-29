@@ -4,14 +4,18 @@
   <SQLQuery>
     <queryString>select sc.id,
 sc.student_id, sc.course_id,
+c.name course_name,
+sc.grade,
+sc.complete_date,
 s.name,
 s.dob,
 s.gender,
 s.year,
 s.gpa,
 s.photo
-from student s, student_course sc
-where sc.student_id = s.id</queryString>
+from student s, student_course sc, course c
+where sc.student_id = s.id
+  AND sc.course_id  = c.id</queryString>
   </SQLQuery>
   <columns>
     <column>
@@ -85,6 +89,53 @@ where sc.student_id = s.id</queryString>
           </value>
         </entry>
       </properties>
+    </column>
+    <column>
+      <name>COURSE_NAME</name>
+      <dataTypeUsage>
+        <attributeValues>
+          <entry>
+            <key>size</key>
+            <value class="java.lang.Long">60</value>
+          </entry>
+          <entry>
+            <key>unit</key>
+            <value class="java.lang.String">CHAR</value>
+          </entry>
+        </attributeValues>
+        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
+          <typeName>VARCHAR2</typeName>
+        </dataTypeID>
+      </dataTypeUsage>
+      <notNull>false</notNull>
+    </column>
+    <column>
+      <name>GRADE</name>
+      <dataTypeUsage>
+        <attributeValues>
+          <entry>
+            <key>size</key>
+            <value class="java.lang.Long">1</value>
+          </entry>
+          <entry>
+            <key>unit</key>
+            <value class="java.lang.String">CHAR</value>
+          </entry>
+        </attributeValues>
+        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
+          <typeName>VARCHAR2</typeName>
+        </dataTypeID>
+      </dataTypeUsage>
+      <notNull>false</notNull>
+    </column>
+    <column>
+      <name>COMPLETE_DATE</name>
+      <dataTypeUsage>
+        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
+          <typeName>DATE</typeName>
+        </dataTypeID>
+      </dataTypeUsage>
+      <notNull>false</notNull>
     </column>
     <column>
       <name>NAME</name>

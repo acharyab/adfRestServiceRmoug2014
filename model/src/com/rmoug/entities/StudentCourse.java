@@ -21,7 +21,9 @@ import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
-@NamedQueries({ @NamedQuery(name = "StudentCourse.findAll", query = "select o from StudentCourse o") })
+@NamedQueries({ @NamedQuery(name = "StudentCourse.findAll", query = "select o from StudentCourse o"),
+                 @NamedQuery(name = "StudentCourse.findStudentCourseById", query = "select o from StudentCourse o where o.studentId = ?1")
+                })
 @Table(name = "STUDENT_COURSE")
 @XmlRootElement
 public class StudentCourse implements Serializable {
@@ -31,8 +33,7 @@ public class StudentCourse implements Serializable {
     private Date completeDate;
     @Column(name = "COURSE_ID", nullable = false)
     private BigDecimal courseId;
-    @Column(length = 1)
-    private String grade;
+    private BigDecimal grade;
     @Id
     @Column(nullable = false)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "generic_seq")
@@ -44,7 +45,7 @@ public class StudentCourse implements Serializable {
     public StudentCourse() {
     }
 
-    public StudentCourse(Date completeDate, BigDecimal courseId, String grade, BigDecimal id, BigDecimal studentId) {
+    public StudentCourse(Date completeDate, BigDecimal courseId, BigDecimal grade, BigDecimal id, BigDecimal studentId) {
         this.completeDate = completeDate;
         this.courseId = courseId;
         this.grade = grade;
@@ -68,11 +69,11 @@ public class StudentCourse implements Serializable {
         this.courseId = courseId;
     }
 
-    public String getGrade() {
+    public BigDecimal getGrade() {
         return grade;
     }
 
-    public void setGrade(String grade) {
+    public void setGrade(BigDecimal grade) {
         this.grade = grade;
     }
 

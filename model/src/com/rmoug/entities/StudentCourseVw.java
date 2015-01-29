@@ -19,7 +19,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @NamedQueries({ @NamedQuery(name = "StudentCourseVw.findAll", query = "select o from StudentCourseVw o"),
-                @NamedQuery(name = "StudentCourseVw.findStudentbyCourse", query = "select o from StudentCourseVw o where o.courseId = ?1") })
+                @NamedQuery(name = "StudentCourseVw.findStudentbyCourse", query = "select o from StudentCourseVw o where o.courseId = ?1"),
+                @NamedQuery(name = "StudentCourseVw.findCoursesByStudent", query = "select o from StudentCourseVw o where o.studentId = ?2")
+                })
 @Table(name = "STUDENT_COURSE_VW")
 @XmlRootElement
 public class StudentCourseVw implements Serializable {
@@ -31,7 +33,7 @@ public class StudentCourseVw implements Serializable {
     private Date dob;
     @Column(nullable = false, length = 1)
     private String gender;
-    private Integer gpa;
+    private BigDecimal gpa;
     @Id
     @Column(nullable = false)
     private BigDecimal id;
@@ -43,12 +45,19 @@ public class StudentCourseVw implements Serializable {
     private BigDecimal studentId;
     @Column(nullable = false, length = 60)
     private String year;
+    @Column(name = "COURSE_NAME", nullable = false, length = 60)
+    private String courseName;
+    private Integer grade;
+    @Temporal(TemporalType.DATE)
+    @Column(name = "COMPLETE_DATE", nullable = false)
+    private Date completeDate;
+    
 
     public StudentCourseVw() {
     }
 
-    public StudentCourseVw(BigDecimal courseId, Date dob, String gender, Integer gpa, BigDecimal id, String name,
-                           String photo, BigDecimal studentId, String year) {
+    public StudentCourseVw(BigDecimal courseId, Date dob, String gender, BigDecimal gpa, BigDecimal id, String name,
+                           String photo, BigDecimal studentId, String year, String courseName, Integer grade, Date completeDate) {
         this.courseId = courseId;
         this.dob = dob;
         this.gender = gender;
@@ -58,6 +67,9 @@ public class StudentCourseVw implements Serializable {
         this.photo = photo;
         this.studentId = studentId;
         this.year = year;
+        this.courseName = courseName;
+        this.grade = grade;
+        this.completeDate = completeDate;
     }
 
     public BigDecimal getCourseId() {
@@ -84,11 +96,11 @@ public class StudentCourseVw implements Serializable {
         this.gender = gender;
     }
 
-    public Integer getGpa() {
+    public BigDecimal getGpa() {
         return gpa;
     }
 
-    public void setGpa(Integer gpa) {
+    public void setGpa(BigDecimal gpa) {
         this.gpa = gpa;
     }
 
@@ -130,5 +142,29 @@ public class StudentCourseVw implements Serializable {
 
     public void setYear(String year) {
         this.year = year;
+    }
+    
+    public void setCourseName(String courseName) {
+        this.courseName = courseName;
+    }
+
+    public String getCourseName() {
+        return courseName;
+    }
+
+    public void setGrade(Integer grade) {
+        this.grade = grade;
+    }
+
+    public Integer getGrade() {
+        return grade;
+    }
+
+    public void setCompleteDate(Date completeDate) {
+        this.completeDate = completeDate;
+    }
+
+    public Date getCompleteDate() {
+        return completeDate;
     }
 }

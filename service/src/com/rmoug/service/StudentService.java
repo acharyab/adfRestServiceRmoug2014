@@ -115,5 +115,20 @@ public class StudentService {
         return studentBean.getCourseFindAll();
     }
     
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/coursesForStudent") 
+    public List<StudentCourseVw> getCoursesForStudent(@QueryParam("studentId") BigDecimal studentId) {
+        
+      List<StudentCourseVw> courseForStudent;
+      
+      if (studentId != null)
+          courseForStudent = studentBean.getCoursesByStudent(studentId);
+      else
+          throw new WebApplicationException(Response.Status.BAD_REQUEST);
+      
+      return courseForStudent;
+    }
+    
     
 }

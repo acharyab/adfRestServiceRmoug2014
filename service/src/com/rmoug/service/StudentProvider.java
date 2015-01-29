@@ -29,7 +29,8 @@ public class StudentProvider {
     private static final ObjectMapper mapper = new ObjectMapper();
 
     static {
-        mapper.setDateFormat(new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX"));
+        //mapper.setDateFormat(new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX"));
+        mapper.setDateFormat(new SimpleDateFormat("yyyy-MM-dd"));
     }
 
     @Provider

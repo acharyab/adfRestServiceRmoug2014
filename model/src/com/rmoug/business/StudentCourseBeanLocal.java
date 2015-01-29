@@ -47,4 +47,6 @@ public interface StudentCourseBeanLocal {
     List<StudentCourse> getStudentCourseFindAll();
     
     List<StudentCourseVw> getStudentsForCourse(BigDecimal courseId);
+    
+    List<StudentCourseVw> getCoursesByStudent(BigDecimal studentId);
 }
