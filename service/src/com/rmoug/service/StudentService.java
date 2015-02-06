@@ -24,6 +24,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
@@ -97,7 +98,15 @@ public class StudentService {
         studentBean.removeStudentCourse(studentCourse);
         return Response.ok().build();
     }  
-    
+
+    @DELETE
+    @Path("/studentCourse/{studentCourseId}")
+    public Response removeStudentFromCourseParam(@PathParam("studentCourseId") String studentCourseId) {
+        StudentCourse sc = new StudentCourse();
+        sc.setId(new BigDecimal(studentCourseId));
+        studentBean.removeStudentCourse(sc);
+        return Response.ok().build();
+    }     
     
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
