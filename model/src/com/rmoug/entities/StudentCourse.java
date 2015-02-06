@@ -22,7 +22,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @NamedQueries({ @NamedQuery(name = "StudentCourse.findAll", query = "select o from StudentCourse o"),
-                 @NamedQuery(name = "StudentCourse.findStudentCourseById", query = "select o from StudentCourse o where o.studentId = ?1")
+                 @NamedQuery(name = "StudentCourse.findStudentCourseById", query = "select o from StudentCourse o where o.studentId = ?1"),
+                @NamedQuery(name = "Student.findStudentNoCourse", query = "select o from Student o where o.id not in (select sc.studentId from StudentCourse sc where sc.courseId = ?1)")
                 })
 @Table(name = "STUDENT_COURSE")
 @XmlRootElement

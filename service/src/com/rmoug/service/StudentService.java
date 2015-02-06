@@ -130,5 +130,19 @@ public class StudentService {
       return courseForStudent;
     }
     
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/studentsNotEnrolled") 
+    public List<Student> getfindStudentNoCourse(@QueryParam("courseId") BigDecimal courseId) {
+        
+      List<Student> studentNotEnrolled;
+      
+      if (courseId != null)
+          studentNotEnrolled = studentBean.getStudentNoCourse(courseId);
+      else
+          throw new WebApplicationException(Response.Status.BAD_REQUEST);
+      
+      return studentNotEnrolled;
+    }
     
 }
