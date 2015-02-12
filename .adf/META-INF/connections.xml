@@ -2,22 +2,22 @@
   <Reference name="twcis" className="oracle.jdeveloper.db.adapter.DatabaseProvider" credentialStoreKey="twcis" xmlns="">
     <Factory className="oracle.jdevimpl.db.adapter.DatabaseProviderFactory1212"/>
     <RefAddresses>
-      <StringRefAddr addrType="sid">
-        <Contents>twcis</Contents>
-      </StringRefAddr>
       <StringRefAddr addrType="subtype">
         <Contents>oraJDBC</Contents>
       </StringRefAddr>
       <StringRefAddr addrType="user">
-        <Contents>wcis_dba</Contents>
-      </StringRefAddr>
-      <StringRefAddr addrType="hostname">
-        <Contents>devhost</Contents>
+        <Contents>hr</Contents>
       </StringRefAddr>
       <StringRefAddr addrType="port">
         <Contents>1521</Contents>
       </StringRefAddr>
+      <StringRefAddr addrType="hostname">
+        <Contents>localhost</Contents>
+      </StringRefAddr>
       <SecureRefAddr addrType="password"/>
+      <StringRefAddr addrType="serviceName">
+        <Contents>orcl</Contents>
+      </StringRefAddr>
       <StringRefAddr addrType="oraDriverType">
         <Contents>thin</Contents>
       </StringRefAddr>

@@ -20,7 +20,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @NamedQueries({ @NamedQuery(name = "StudentCourseVw.findAll", query = "select o from StudentCourseVw o"),
                 @NamedQuery(name = "StudentCourseVw.findStudentbyCourse", query = "select o from StudentCourseVw o where o.courseId = ?1"),
-                @NamedQuery(name = "StudentCourseVw.findCoursesByStudent", query = "select o from StudentCourseVw o where o.studentId = ?2")
+                @NamedQuery(name = "StudentCourseVw.findCoursesByStudent", query = "select o from StudentCourseVw o where o.studentId = ?2 and o.grade != null")
                 })
 @Table(name = "STUDENT_COURSE_VW")
 @XmlRootElement
